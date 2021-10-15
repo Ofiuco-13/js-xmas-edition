@@ -10,6 +10,11 @@ function probarValidarNombre() {
       'Este campo debe tener menos de 50 caracteres',
       'Validar nombre no validó que el nombre sea menor a 50 caracteres',
   );
+
+  console.assert(
+      validarNombre('Emmanuel') === '',
+      'validarNombre no funciono con un nombre valido'
+  )
 }
 
 function probarValidarProvincia() {
@@ -34,6 +39,11 @@ function probarValidarDescripcionRegalo () {
         validarDescripcionRegalo('11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111')
         === 'El campo no puede contener mas de 100 caracteres',
         'validarDescripcionRegalo no valido que el campo no pueda contener mas de 100 caracteres'
+    );
+
+    console.assert(
+        validarDescripcionRegalo('Quiero un laburo') === '',
+        'validarDescripcionRegalo no funciono con una descripcion de regalo valida'
     );
 }
 
