@@ -4,7 +4,7 @@ const nombre = $form.nombre.value;
 //nombre = document.querySelector('[name = nombre]').value;
 //nombre = document.querySelector('#nombre').value;
 
-const ciudad = $form.ciudad.value;
+const provincia = $form.provincia.value;
 const comportamiento = $form.comportamiento.value;
 const descripcionRegalo  = $form['descripcion-regalo'].value;
 
@@ -19,8 +19,21 @@ function validarNombre (nombre) {
     return '';
 } 
 
-function validarCiudad () {
-    if (ciudad.value === '') {
-        return 'Debe seleccionar una provincia';
-    }
+function validarProvincia (provincia) {
+    if (provincia === '') {
+        return 'Este campo debe contener una provincia';
+    } 
+    return '';
 }
+
+function validarDescripcionRegalo (descripcionRegalo) {
+    if (descripcionRegalo.length >= 100) {
+        return 'El campo no puede contener mas de 100 caracteres';
+    }
+
+    if (descripcionRegalo.length === 0) {
+        return 'El campo no puede estar vacio';
+    }
+    return 'funciona';
+}
+
