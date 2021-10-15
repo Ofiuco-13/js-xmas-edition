@@ -34,6 +34,7 @@ function validarDescripcionRegalo (descripcionRegalo) {
     if (descripcionRegalo.length === 0) {
         return 'El campo no puede estar vacio';
     }
-    return 'funciona';
+    return '';
 }
+
 
