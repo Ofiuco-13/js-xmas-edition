@@ -16,8 +16,12 @@ function validarNombre (nombre) {
     if (nombre.length >= 50) {
         return 'Este campo debe tener menos de 50 caracteres';
     }
+
+    if (!/^[a-z]+$/i.test(nombre)) {
+        return 'Este campo solo acepta letras';
+    }
     return '';
-} 
+}
 
 function validarProvincia (provincia) {
     if (provincia === '') {
@@ -36,5 +40,6 @@ function validarDescripcionRegalo (descripcionRegalo) {
     }
     return '';
 }
+
 
 

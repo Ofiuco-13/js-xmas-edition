@@ -12,9 +12,14 @@ function probarValidarNombre() {
   );
 
   console.assert(
+      validarNombre('asda123123123') === 'Este campo solo acepta letras',
+      'Validar nombre no valido que el nombre solo tenga letras'
+  );
+
+  console.assert(
       validarNombre('Emmanuel') === '',
       'validarNombre no funciono con un nombre valido'
-  )
+  );
 }
 
 function probarValidarProvincia() {
