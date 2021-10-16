@@ -1,11 +1,3 @@
-const $form = document.querySelector('#carta-a-santa');
-
-const nombre = $form.nombre.value;
-
-const provincia = $form.provincia.value;
-const comportamiento = $form.comportamiento.value;
-const descripcionRegalo  = $form['descripcion-regalo'].value;
-
 function validarNombre (nombre) {
     if (nombre.length === 0) {
         return 'Este campo debe contener al menos 1 caracter';
@@ -43,5 +35,53 @@ function validarDescripcionRegalo (descripcionRegalo) {
     return '';
 }
 
+function validarFormulario(event) {
+    const $form = document.querySelector('#carta-a-santa');
+
+    const nombre = $form.nombre.value;
+    const provincia = $form.provincia.value;
+    const descripcionRegalo  = $form['descripcion-regalo'].value;
+
+    const errorNombre = validarNombre(nombre);
+    const errorProvincia = validarProvincia(provincia);
+    const errorDescripcionRegalo = validarDescripcionRegalo(descripcionRegalo);
+
+    const errores = {
+        nombre: errorNombre,
+        provincia: errorProvincia,
+        descripcionRegalo: errorDescripcionRegalo
+    }
+
+    manejarErrores(errores);
+
+    event.preventDefault();
+}
+
+function manejarErrores (errores) {
+    errorNombre = errores.nombre;
+    errorProvincia = errores.provincia;
+    errorDescripcionRegalo = errores.descripcionRegalo;
+
+    if (errorNombre) {
+        $form.nombre.className = 'error';
+    } else {
+        $form.nombre.className = '';
+    }
+
+    if (errorProvincia) {
+        $form.provincia.className = 'error';
+    } else {
+        $form.provincia.className = '';
+    }
+
+    if (errorDescripcionRegalo) {
+        $form['descripcion-regalo'].className = 'error';
+    } else {
+        $form['descripcion-regalo'].className = '';
+    }
+}
+
+const $form = document.querySelector("#carta-a-santa");
+$form.onsubmit = validarFormulario;
 
 
