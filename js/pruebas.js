@@ -47,8 +47,13 @@ function probarValidarDescripcionRegalo () {
     );
 
     console.assert(
-        validarDescripcionRegalo('Quiero un laburo') === '',
+        validarDescripcionRegalo('Quiero un regalo') === '',
         'validarDescripcionRegalo no funciono con una descripcion de regalo valida'
+    );
+
+    console.assert(
+        validarDescripcionRegalo(',.,.,.,') === 'El campo solo puede contener letras y numeros',
+        'validarDescripcionRegalo no valido que el campo solo acepte letras y numeros'
     );
 }
 

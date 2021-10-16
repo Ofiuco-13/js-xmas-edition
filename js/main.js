@@ -1,8 +1,6 @@
 const $form = document.querySelector('#carta-a-santa');
 
 const nombre = $form.nombre.value;
-//nombre = document.querySelector('[name = nombre]').value;
-//nombre = document.querySelector('#nombre').value;
 
 const provincia = $form.provincia.value;
 const comportamiento = $form.comportamiento.value;
@@ -37,6 +35,10 @@ function validarDescripcionRegalo (descripcionRegalo) {
 
     if (descripcionRegalo.length === 0) {
         return 'El campo no puede estar vacio';
+    }
+
+    if (!/^[a-z0-9]+$/.test(descripcionRegalo)) {
+        return 'El campo solo puede contener letras y numeros';
     }
     return '';
 }
