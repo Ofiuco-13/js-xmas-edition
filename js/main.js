@@ -49,7 +49,7 @@ function validarFormulario(event) {
     const errores = {
         nombre: errorNombre,
         provincia: errorProvincia,
-        descripcionRegalo: errorDescripcionRegalo
+        'descripcion-regalo': errorDescripcionRegalo
     }
 
     manejarErrores(errores);
@@ -58,27 +58,40 @@ function validarFormulario(event) {
 }
 
 function manejarErrores (errores) {
-    errorNombre = errores.nombre;
-    errorProvincia = errores.provincia;
-    errorDescripcionRegalo = errores.descripcionRegalo;
+    
+    const keys = Object.keys(errores);
 
-    if (errorNombre) {
-        $form.nombre.className = 'error';
-    } else {
-        $form.nombre.className = '';
-    }
+    keys.forEach(function(key) {
+        const error = errores[key]
 
-    if (errorProvincia) {
-        $form.provincia.className = 'error';
-    } else {
-        $form.provincia.className = '';
-    }
+        if (error) {
+            $form[key].className = 'error';
+        } else {
+            $form[key].className = '';
+        }
+    })
 
-    if (errorDescripcionRegalo) {
-        $form['descripcion-regalo'].className = 'error';
-    } else {
-        $form['descripcion-regalo'].className = '';
-    }
+    // errorNombre = errores.nombre;
+    // errorProvincia = errores.provincia;
+    // errorDescripcionRegalo = errores.descripcionRegalo;
+
+    // if (errorNombre) {
+    //     $form.nombre.className = 'error';
+    // } else {
+    //     $form.nombre.className = '';
+    // }
+
+    // if (errorProvincia) {
+    //     $form.provincia.className = 'error';
+    // } else {
+    //     $form.provincia.className = '';
+    // }
+
+    // if (errorDescripcionRegalo) {
+    //     $form['descripcion-regalo'].className = 'error';
+    // } else {
+    //     $form['descripcion-regalo'].className = '';
+    // }
 }
 
 const $form = document.querySelector("#carta-a-santa");
