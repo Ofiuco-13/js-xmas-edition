@@ -29,7 +29,7 @@ function validarDescripcionRegalo (descripcionRegalo) {
         return 'El campo no puede estar vacio';
     }
 
-    if (!/^[a-z0-9]+$/.test(descripcionRegalo)) {
+    if (!/^[a-z0-9 ]+$/.test(descripcionRegalo)) {
         return 'El campo solo puede contener letras y numeros';
     }
     return '';
@@ -52,7 +52,11 @@ function validarFormulario(event) {
         'descripcion-regalo': errorDescripcionRegalo
     }
 
-    manejarErrores(errores);
+    const esExito = manejarErrores(errores) === 0;
+
+    if (esExito) {
+        document.querySelector('#exito').className = '';
+    }
 
     event.preventDefault();
 }
@@ -61,10 +65,9 @@ function manejarErrores (errores) {
     const keys = Object.keys(errores);
     const $errores = document.querySelector("#errores");
 
-
     keys.forEach(function(key) {
         const error = errores[key]
-
+        
         if (error) {
             $form[key].className = 'error';
             const $error = document.createElement('li');
