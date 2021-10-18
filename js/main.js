@@ -55,6 +55,7 @@ function validarFormulario(event) {
     const esExito = manejarErrores(errores) === 0;
 
     if(esExito) {
+        $form.className = 'oculto';
         document.querySelector('#exito').className = '';
     }
 
