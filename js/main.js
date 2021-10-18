@@ -50,11 +50,11 @@ function validarFormulario(event) {
         nombre: errorNombre,
         provincia: errorProvincia,
         'descripcion-regalo': errorDescripcionRegalo
-    }
+    };
 
     const esExito = manejarErrores(errores) === 0;
 
-    if (esExito) {
+    if(esExito) {
         document.querySelector('#exito').className = '';
     }
 
@@ -64,19 +64,24 @@ function validarFormulario(event) {
 function manejarErrores (errores) {
     const keys = Object.keys(errores);
     const $errores = document.querySelector("#errores");
+    let cantidadErrores = 0;
 
     keys.forEach(function(key) {
-        const error = errores[key]
+        const error = errores[key];
         
         if (error) {
+            cantidadErrores++;
             $form[key].className = 'error';
+
             const $error = document.createElement('li');
             $error.innerText = error;
             $errores.appendChild($error);
         } else {
             $form[key].className = '';
         }
-    })
+    });
+
+    return cantidadErrores;
 }
 
 const $form = document.querySelector("#carta-a-santa");
