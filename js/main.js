@@ -24,7 +24,6 @@ function validarFormulario() {
   };
 
   crearMensajeErrores(errores);
-  mostrarMensajeExito(errores);
 }
 
 function crearMensajeErrores(errores) {
@@ -47,21 +46,12 @@ function crearMensajeErrores(errores) {
     }
   });
 
-  let $erroresAnteriores = document.querySelectorAll("#errores li");
+  const $erroresAnteriores = document.querySelectorAll("#errores li");
   if ($erroresAnteriores.length === 0) {
     $form.className = "oculto";
     document.querySelector("#exito").className = "";
   }
   return cantidadErrores;
-}
-
-function mostrarMensajeExito(errores) {
-  const esExito = crearMensajeErrores(errores) === 0;
-
-  if (esExito) {
-    $form.className = "oculto";
-    document.querySelector("#exito").className = "";
-  }
 }
 
 function borrarErroresAnteriores() {
