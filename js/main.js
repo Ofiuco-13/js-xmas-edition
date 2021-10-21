@@ -24,12 +24,12 @@ function validarFormulario() {
   };
 
   crearMensajeErrores(errores);
-  mostrarMensajeExito(errores);
 }
 
 function crearMensajeErrores(errores) {
   const keys = Object.keys(errores);
   const $errores = document.querySelector("#errores");
+  
   let cantidadErrores = 0;
 
   keys.forEach(function (key) {
@@ -45,18 +45,16 @@ function crearMensajeErrores(errores) {
     } else {
       $form[key].className = "";
     }
+
+    const $erroresAnteriores = document.querySelectorAll('#errores li');
+
+    if ($erroresAnteriores === 0) {
+      $form.className = "oculto";
+      document.querySelector("#exito").className = "";
+    }
   });
 
   return cantidadErrores;
-}
-
-function mostrarMensajeExito(errores) {
-  const esExito = crearMensajeErrores(errores) === 0;
-
-  if (esExito) {
-    $form.className = "oculto";
-    document.querySelector("#exito").className = "";
-  }
 }
 
 function borrarErroresAnteriores() {
