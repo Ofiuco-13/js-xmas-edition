@@ -50,6 +50,8 @@ function crearMensajeErrores(errores) {
   if ($erroresAnteriores.length === 0) {
     $form.className = "oculto";
     document.querySelector("#exito").className = "";
+
+    redireccionar();
   }
   return cantidadErrores;
 }
@@ -62,6 +64,12 @@ function borrarErroresAnteriores() {
       $errores[i].remove();
     }
   }
+}
+
+function redireccionar() {
+  setTimeout(() => {
+    window.location.replace("wishlist.html");
+  }, 4000);
 }
 
 function validarNombre(nombre) {
