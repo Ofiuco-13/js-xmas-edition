@@ -47,6 +47,11 @@ function crearMensajeErrores(errores) {
     }
   });
 
+  let $erroresAnteriores = document.querySelectorAll("#errores li");
+  if ($erroresAnteriores.length === 0) {
+    $form.className = "oculto";
+    document.querySelector("#exito").className = "";
+  }
   return cantidadErrores;
 }
 
